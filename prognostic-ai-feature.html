@@ -4,27 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PrognosticAI Features</title>
-</head>
-<body>
-    <script>
-        class PrognosticAIFeature extends HTMLElement {
-            constructor() {
-                super();
-                this.attachShadow({ mode: 'open' });
-            }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
-            connectedCallback() {
-                this.shadowRoot.innerHTML = `
-                    <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+        :root {
+            --primary-color: #0142AC;
+            --text-color: #2E2E2E;
+            --background-color: #F7F7F7;
+        }
 
-:root {
---primary-color: #0142AC;
---text-color: #2E2E2E;
---background-color: #F7F7F7;
-}
-
-* {
+        * {
 margin: 0;
 padding: 0;
 box-sizing: border-box;
@@ -250,24 +239,26 @@ text-align: center;
 }
 }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>                    
-                    <header class="header">
-    <a href="https://prognostic.ai" class="logo">Prognostic<span>AI</span></a>
-    <div class="right-nav">
-        <nav class="nav-links">
-            <div class="dropdown">
-                <div class="dropdown-toggle nav-link">
-                    What You Get <i class="fas fa-chevron-down"></i>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="https://prognostic.ai" class="logo">Prognostic<span>AI</span></a>
+        <div class="right-nav">
+            <nav class="nav-links">
+                <div class="dropdown">
+                    <div class="dropdown-toggle nav-link">
+                        What You Get <i class="fas fa-chevron-down"></i>
+                    </div>
                 </div>
-            </div>
-            <a href="https://prognostic.ai/#pricing" class="nav-link">Pricing</a>
-        </nav>
-        <a href="https://app.prognostic.ai/#demo" class="cta-button">Try For Free</a>
-    </div>
-</header>
+                <a href="https://prognostic.ai/#pricing" class="nav-link">Pricing</a>
+            </nav>
+            <a href="https://app.prognostic.ai/#demo" class="cta-button">Try For Free</a>
+        </div>
+    </header>
 
-<div class="dropdown-content">
-    <div class="feature">
+    <div class="dropdown-content">
+        <div class="feature">
 <i class="fas fa-robot feature-icon"></i>
 <div class="feature-content">
 <div class="feature-title">AI Opt-in Pages</div>
@@ -437,82 +428,75 @@ text-align: center;
 </div>
 </div>
 
-</div>
-                    <script>
-document.addEventListener('DOMContentLoaded', (event) => {
-const dropdown = document.querySelector('.dropdown');
-const dropdownContent = document.querySelector('.dropdown-content');
-const dropdownToggle = document.querySelector('.dropdown-toggle');
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
 
-let timeoutId;
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownContent = document.querySelector('.dropdown-content');
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
 
-function showDropdown() {
-clearTimeout(timeoutId);
-dropdownContent.classList.add('active');
-dropdownToggle.querySelector('i').style.transform = 'rotate(180deg)';
-}
+            let timeoutId;
 
-function hideDropdown() {
-timeoutId = setTimeout(() => {
-if (!isMouseOverDropdown()) {
-dropdownContent.classList.remove('active');
-dropdownToggle.querySelector('i').style.transform = 'rotate(0deg)';
-}
-}, 100);
-}
-
-function isMouseOverDropdown() {
-const rect = dropdownContent.getBoundingClientRect();
-const mouseX = event.clientX;
-const mouseY = event.clientY;
-return (
-mouseX >= rect.left &&
-mouseX <= rect.right &&
-mouseY >= rect.top &&
-mouseY <= rect.bottom
-);
-}
-
-dropdown.addEventListener('mouseenter', showDropdown);
-dropdown.addEventListener('mouseleave', hideDropdown);
-
-dropdownContent.addEventListener('mouseenter', showDropdown);
-dropdownContent.addEventListener('mouseleave', hideDropdown);
-
-// Close dropdown when clicking outside
-document.addEventListener('click', (event) => {
-if (!dropdown.contains(event.target) && !dropdownContent.contains(event.target)) {
-dropdownContent.classList.remove('active');
-dropdownToggle.querySelector('i').style.transform = 'rotate(0deg)';
-}
-});
-
-// Scroll effect for header
-const header = document.querySelector('.header');
-window.addEventListener('scroll', () => {
-if (window.scrollY > 50) {
-header.classList.add('scrolled');
-} else {
-header.classList.remove('scrolled');
-}
-});
-
-// Feature click functionality
-const features = document.querySelectorAll('.feature');
-features.forEach(feature => {
-feature.addEventListener('click', () => {
-console.log('Feature clicked:', feature.querySelector('.feature-title').textContent);
-});
-});
-});
-</script>
-                `;
+            function showDropdown() {
+                clearTimeout(timeoutId);
+                dropdownContent.classList.add('active');
+                dropdownToggle.querySelector('i').style.transform = 'rotate(180deg)';
             }
-        }
 
-        customElements.define('prognostic-ai-feature', PrognosticAIFeature);
+            function hideDropdown() {
+                timeoutId = setTimeout(() => {
+                    if (!isMouseOverDropdown()) {
+                        dropdownContent.classList.remove('active');
+                        dropdownToggle.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                }, 100);
+            }
 
-        document.getElementById('prognostic-ai-feature').innerHTML = '<prognostic-ai-feature></prognostic-ai-feature>';
+            function isMouseOverDropdown() {
+                const rect = dropdownContent.getBoundingClientRect();
+                const mouseX = event.clientX;
+                const mouseY = event.clientY;
+                return (
+                    mouseX >= rect.left &&
+                    mouseX <= rect.right &&
+                    mouseY >= rect.top &&
+                    mouseY <= rect.bottom
+                );
+            }
+
+            dropdown.addEventListener('mouseenter', showDropdown);
+            dropdown.addEventListener('mouseleave', hideDropdown);
+
+            dropdownContent.addEventListener('mouseenter', showDropdown);
+            dropdownContent.addEventListener('mouseleave', hideDropdown);
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!dropdown.contains(event.target) && !dropdownContent.contains(event.target)) {
+                    dropdownContent.classList.remove('active');
+                    dropdownToggle.querySelector('i').style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // Scroll effect for header
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Feature click functionality
+            const features = document.querySelectorAll('.feature');
+            features.forEach(feature => {
+                feature.addEventListener('click', () => {
+                    console.log('Feature clicked:', feature.querySelector('.feature-title').textContent);
+                });
+            });
+        });
     </script>
 </body>
 </html>
